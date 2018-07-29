@@ -1,23 +1,23 @@
 # Updated as of Aug 16, 2017
 # Install FROM UBUNTU IMAGE
-#FROM ubuntu:16.04
+FROM ubuntu:16.04
 
 # Author
 MAINTAINER pictolearn
 
 # RUN COMMAND BASICALLY runs the command in the terminal and creates an image.
 # Install all the updates for UBUNTU
-#RUN apt-get update && apt-get install -y python-software-properties software-properties-common
+RUN apt-get update && apt-get install -y python-software-properties software-properties-common
 
 # Install all the updates for UBUNTU
-#RUN apt-get install -y iputils-ping
+RUN apt-get install -y iputils-ping
 
 # Adds the repository where JDK 8 can be obtained for UBUNTU
-#RUN add-apt-repository ppa:webupd8team/java
+RUN add-apt-repository ppa:webupd8team/java
 
 # INSTALL THE VI EDITOR AND MYSQL-CLIENT
-#RUN apt-get install -y vim
-#RUN apt-get install -y mysql-client
+RUN apt-get install -y vim
+RUN apt-get install -y mysql-client
 
 #INSTALL ORACLE JDK 8 BY ACCEPTING YES
 RUN echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 boolean true" | debconf-set-selections
