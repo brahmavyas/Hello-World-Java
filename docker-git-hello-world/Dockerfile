@@ -1,11 +1,8 @@
-# Updated as of Aug 16, 2017
-# ----------------------------------------------------------------------------------
-# June 1, 2017: Oracle has archived JDK 7 and uses login to download JDK 7 hence
-# UBUNTU is unable to download JDK 7, we will hence demonstrate this with OPEN JDK 7
-#-----------------------------------------------------------------------------------
+
 # This file is used to create a docker image.
 # UBUNTU/CENTOS - > TOMCAT 7.x -> JDK 1.7 with all the updates, curl, vim
 FROM ubuntu:16.04
+
 
 
 #Download the latest version of 7.x
@@ -18,11 +15,7 @@ RUN apt-get -y update && apt-get -y upgrade
 #Install curl/vim incase you want to debug. VIM - vi editor, curl is a utility which acts as http client which can be run from the unix prompt.
 RUN apt-get -y install software-properties-common
 
-# June 1, 2017 : Commented out Oracle JDK installation procedure
-# RUN add-apt-repository ppa:webupd8team/java
-#The below instruction is very important, failing to add this will not allow you to install JDK
-# after the repository has been added.
-# RUN apt-get -y update
+
 
 # June 1, 2017 : Moved all installation packages to a single line
 #Install CURL and VIM editors
@@ -41,9 +34,6 @@ RUN apt-get update -y
 RUN apt-get install -y openjdk-7-jdk 
 ENV JAVA_HOME /usr/lib/jvm/java-1.7.0-openjdk-amd64
 
-#Download the latest version of 7.x
-#Verify the version exists here or else change it: http://apache.rediris.es/tomcat/tomcat-7
-ENV TOMCAT_VERSION 7.0.88
 # Get Tomcat
 # notice that i can add the same RUN command across multiple lines
 RUN wget --quiet --no-cookies http://apache.rediris.es/tomcat/tomcat-7/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz && \
